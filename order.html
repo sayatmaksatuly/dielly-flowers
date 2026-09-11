@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Автор страницы: Саят Максатулы -->
     <meta name="author" content="Саят Максатулы">
-    <title>Dielly Flowers — Оформление заказа</title>
+    <title>Dielly Flowers — Оформить заказ</title>
 </head>
 <body>
     <!-- Используем header для вводной части сайта, где располагается логотип и главная навигация -->
@@ -25,9 +25,57 @@
 
     <main>
         <section>
-            <!-- Здесь мы позже будем собирать контент для каждой конкретной страницы -->
-            <h2>Оформить заказ</h2>
-            <p>Текст-заглушка для страницы.</p>
+            <h2>Оформление заказа и доставка</h2>
+            <p>Мы рады предложить вам удобный сервис заказа цветов и женских сумок с доставкой по всей Астане. Пожалуйста, внимательно заполните форму ниже. Наши менеджеры свяжутся с вами в течение 15 минут после оформления заявки для подтверждения деталей, уточнения наличия выбранных позиций и согласования точного времени доставки. Мы осуществляем бережную курьерскую доставку ежедневно с 10:00 до 23:30. При заказе на сумму свыше 20 000 тенге доставка по городу осуществляется абсолютно бесплатно.</p>
+            
+            <p>Оплата принимается наличными курьеру, банковским переводом или картой через терминал при самовывозе. Если вы хотите сделать сюрприз близкому человеку, мы можем доставить букет инкогнито, зная только номер телефона получателя, или приложить к заказу бесплатную фирменную открытку с вашим текстом.</p>
+
+            <p>Мы гарантируем 100% свежесть всех наших цветов. Поставки осуществляются три раза в неделю напрямую из Эквадора и Голландии. Если букет потеряет свой первоначальный вид в течение первых 24 часов при соблюдении правил ухода, мы бесплатно заменим его на новый. Ваше доверие — наш главный приоритет.</p>
+
+            <!-- Используем тег form. Атрибут action пустой, так как по заданию мы используем только чистый HTML без серверной логики обработки -->
+            <!-- Используем fieldset и legend для логической группировки полей формы -->
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Ваши контактные данные</legend>
+
+                    <!-- Используем label с атрибутом for для связки с id инпута (требование accessibility) -->
+                    <label for="client-name">Ваше имя:</label><br>
+                    <input type="text" id="client-name" name="client_name" required><br><br>
+
+                    <label for="client-phone">Контактный телефон:</label><br>
+                    <input type="tel" id="client-phone" name="client_phone" required><br><br>
+
+                    <label for="client-email">Email (для отправки чека):</label><br>
+                    <input type="email" id="client-email" name="client_email"><br><br>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Детали заказа</legend>
+
+                    <label for="product-select">Выберите букет из каталога:</label><br>
+                    <select id="product-select" name="product">
+                        <option value="passion">«Нежная страсть» (18 500 KZT)</option>
+                        <option value="spring">«Весеннее пробуждение» (15 000 KZT)</option>
+                        <option value="exotic">«Экзотический микс» (22 000 KZT)</option>
+                        <option value="custom">Индивидуальная сборка флористом</option>
+                    </select><br><br>
+
+                    <p>Способ получения:</p>
+                    <input type="radio" id="delivery-courier" name="delivery_type" value="courier" checked>
+                    <label for="delivery-courier">Доставка курьером по Астане</label><br>
+                    
+                    <input type="radio" id="delivery-pickup" name="delivery_type" value="pickup">
+                    <label for="delivery-pickup">Самовывоз (пр. Аль-Фараби, 15/1)</label><br><br>
+
+                    <label for="order-comments">Пожелания к заказу или текст для открытки:</label><br>
+                    <textarea id="order-comments" name="comments" rows="4" cols="50" placeholder="Напишите здесь ваши пожелания..."></textarea><br><br>
+
+                    <input type="checkbox" id="privacy-policy" name="privacy" required>
+                    <label for="privacy-policy">Я согласен(на) на обработку персональных данных</label><br><br>
+                </fieldset>
+                <br>
+                <button type="submit">Отправить заявку</button>
+            </form>
         </section>
     </main>
 
