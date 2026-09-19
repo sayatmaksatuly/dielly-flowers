@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Dielly Flowers & Bags</title>
+    <link rel="stylesheet" href=base.css">
+    <link rel="stylesheet" href="sayat.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="flowers.html">Каталог цветов</a></li>
+                <li><a href="bags.html">Каталог сумок</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Этот section завтра станет Grid-контейнером 60/40 -->
+        <section class="auth-split-layout">
+            
+            <!-- Левая часть (Лендинг - 60%) -->
+            <article class="auth-promo">
+                <h2>С возвращением в Dielly!</h2>
+                <p>Войдите в личный кабинет, чтобы отслеживать статусы доставки цветов и получать эксклюзивные скидки на новые коллекции сумок.</p>
+                <!-- Не забудь потом закинуть реальную картинку в папку images -->
+                <img src="images/login-promo.jpg" alt="Красивый букет роз">
+            </article>
+
+            <!-- Правая часть (Форма - 40%) -->
+            <aside class="auth-form-area">
+                <form action="#" method="POST">
+                    <fieldset>
+                        <legend>Авторизация</legend>
+                        
+                        <label for="loginEmail">Email:</label>
+                        <input type="email" id="loginEmail" name="email" required>
+                        
+                        <label for="loginPass">Пароль:</label>
+                        <input type="password" id="loginPass" name="password" required>
+                        
+                        <button type="submit">Войти</button>
+                    </fieldset>
+                    <p>Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
+                </form>
+            </aside>
+
+        </section>
+    </main>
+
+    <footer>
+        <address>Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77010000000">+7 701 000-00-00</a></address>
+    </footer>
+</body>
+</html>

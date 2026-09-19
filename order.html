@@ -3,89 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Автор страницы: Саят Максатулы -->
-    <meta name="author" content="Саят Максатулы">
-    <title>Dielly Flowers — Оформить заказ</title>
+    <title>Оформление заказа - Dielly Flowers & Bags</title>
+    
+    <!-- Подключаем базу, затем личный файл (Демонстрация каскада) -->
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="sayat.css">
+
+    <!-- Демонстрация Internal Style: Перебивает фон только для этой страницы -->
+    <style>
+        body { background-color: #fafafa; }
+    </style>
 </head>
 <body>
-    <!-- Используем header для вводной части сайта, где располагается логотип и главная навигация -->
-    <header>
-        <h1>Dielly Flowers & Bags</h1>
+    <header class="main-header">
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О магазине</a></li>
                 <li><a href="flowers.html">Каталог цветов</a></li>
                 <li><a href="bags.html">Каталог сумок</a></li>
-                <li><a href="order.html">Оформить заказ</a></li>
-                <li><a href="colophon.html">О проекте</a></li>
+                <li><a href="order.html" class="active">Заказ</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section>
-            <h2>Оформление заказа и доставка</h2>
-            <p>Мы рады предложить вам удобный сервис заказа цветов и женских сумок с доставкой по всей Астане. Пожалуйста, внимательно заполните форму ниже. Наши менеджеры свяжутся с вами в течение 15 минут после оформления заявки для подтверждения деталей, уточнения наличия выбранных позиций и согласования точного времени доставки. Мы осуществляем бережную курьерскую доставку ежедневно с 10:00 до 23:30. При заказе на сумму свыше 20 000 тенге доставка по городу осуществляется абсолютно бесплатно.</p>
+    <main class="container">
+        <!-- Тот самый Grid-контейнер для сплит-экрана 60/40 -->
+        <section class="auth-split-layout">
             
-            <p>Оплата принимается наличными курьеру, банковским переводом или картой через терминал при самовывозе. Если вы хотите сделать сюрприз близкому человеку, мы можем доставить букет инкогнито, зная только номер телефона получателя, или приложить к заказу бесплатную фирменную открытку с вашим текстом.</p>
+            <article class="auth-promo">
+                <h2 id="order-title">Оформление заказа</h2>
+                <!-- Демонстрация Inline Style: Применен напрямую для перебивания цвета -->
+                <p style="color: #e91e63;">Оставьте свои данные, и мы свяжемся с вами за 5 минут.</p>
+                
+                <div class="promo-content">
+                    <!-- Демонстрация Float -->
+                    <img src="images/order-promo.jpg" alt="Сборка букета" class="float-img">
+                    <p class="static-text">Наши флористы используют только самые свежие цветы премиум-класса. Каждая сумка проходит ручную проверку перед отправкой клиенту.</p>
+                    <!-- Демонстрация Clear -->
+                    <div class="clearfix"></div> 
+                </div>
+            </article>
 
-            <p>Мы гарантируем 100% свежесть всех наших цветов. Поставки осуществляются три раза в неделю напрямую из Эквадора и Голландии. Если букет потеряет свой первоначальный вид в течение первых 24 часов при соблюдении правил ухода, мы бесплатно заменим его на новый. Ваше доверие — наш главный приоритет.</p>
+            <aside class="auth-form-area">
+                <form action="#" method="POST" class="order-form">
+                    <fieldset>
+                        <legend>Ваши данные</legend>
+                        
+                        <label for="userName">Имя:</label>
+                        <input type="text" id="userName" name="name" required>
 
-            <!-- Используем тег form. Атрибут action пустой, так как по заданию мы используем только чистый HTML без серверной логики обработки -->
-            <!-- Используем fieldset и legend для логической группировки полей формы -->
-            <form action="#" method="POST">
-                <fieldset>
-                    <legend>Ваши контактные данные</legend>
+                        <label for="userTel">Телефон:</label>
+                        <input type="tel" id="userTel" name="phone" required>
+                        
+                        <label for="userCity">Город:</label>
+                        <select id="userCity" name="city">
+                            <option value="astana">Астана</option>
+                            <option value="almaty">Алматы</option>
+                        </select>
+                        
+                        <button type="submit" class="submit-btn">Оформить</button>
+                    </fieldset>
+                </form>
+            </aside>
 
-                    <!-- Используем label с атрибутом for для связки с id инпута (требование accessibility) -->
-                    <label for="client-name">Ваше имя:</label><br>
-                    <input type="text" id="client-name" name="client_name" required><br><br>
-
-                    <label for="client-phone">Контактный телефон:</label><br>
-                    <input type="tel" id="client-phone" name="client_phone" required><br><br>
-
-                    <label for="client-email">Email (для отправки чека):</label><br>
-                    <input type="email" id="client-email" name="client_email"><br><br>
-                </fieldset>
-                <br>
-                <fieldset>
-                    <legend>Детали заказа</legend>
-
-                    <label for="product-select">Выберите букет из каталога:</label><br>
-                    <select id="product-select" name="product">
-                        <option value="pink_compliment">«Розовый комплимент» (10 000 KZT)</option>
-                        <option value="white_classic">«Белоснежная классика» (12 000 KZT)</option>
-                        <option value="azure_contrast">«Лазурный контраст» (18 500 KZT)</option>
-                        <option value="custom">Индивидуальная сборка флористом</option>
-                    </select><br><br>
-
-                    <p>Способ получения:</p>
-                    <input type="radio" id="delivery-courier" name="delivery_type" value="courier" checked>
-                    <label for="delivery-courier">Доставка курьером по Астане</label><br>
-                    
-                    <input type="radio" id="delivery-pickup" name="delivery_type" value="pickup">
-                    <label for="delivery-pickup">Самовывоз (пр. Аль-Фараби, 15/1)</label><br><br>
-
-                    <label for="order-comments">Пожелания к заказу или текст для открытки:</label><br>
-                    <textarea id="order-comments" name="comments" rows="4" cols="50" placeholder="Напишите здесь ваши пожелания..."></textarea><br><br>
-
-                    <input type="checkbox" id="privacy-policy" name="privacy" required>
-                    <label for="privacy-policy">Я согласен(на) на обработку персональных данных</label><br><br>
-                </fieldset>
-                <br>
-                <button type="submit">Отправить заявку</button>
-            </form>
         </section>
     </main>
 
-    <!-- Используем footer для контактной информации и копирайта, которые должны быть на каждой странице -->
+    <!-- Демонстрация Fixed Positioning (кнопка чата) -->
+    <div class="chat-widget absolute-center-demo">
+        <span>Чат</span>
+    </div>
+
     <footer>
-        <p><strong>Адрес:</strong> проспект Аль-Фараби, 15/1, Астана</p>
-        <p><strong>Время работы:</strong> 10:00 - 00:00</p>
-        <p><strong>Телефон:</strong> <a href="tel:+77013805856">+7-701-380-58-56</a></p>
-        <p><strong>Instagram:</strong> @dielly_flowers</p>
-        <p>&copy; 2026 Dielly Flowers</p>
+        <address class="flex-center">
+            Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77010000000">+7 701 000-00-00</a>
+        </address>
     </footer>
 </body>
 </html>
