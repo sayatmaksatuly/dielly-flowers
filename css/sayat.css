@@ -1,0 +1,125 @@
+.about-shop {
+    max-width: 67rem;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper);
+    box-shadow: var(--shadow);
+}
+
+.about-shop h2 {
+    margin-bottom: 1.25rem;
+}
+
+.about-shop p + p {
+    margin-top: 1rem;
+}
+
+.about-img {
+    float: left;
+    width: min(42%, 22rem);
+    aspect-ratio: 4 / 5;
+    margin: 0.4rem 2rem 1rem 0;
+    border-radius: 0.9rem;
+    object-fit: cover;
+    box-shadow: 0 14px 30px rgba(58, 34, 39, 0.14);
+}
+
+.clearfix {
+    clear: both;
+}
+
+.help-widget {
+    position: fixed;
+    right: clamp(1rem, 3vw, 2rem);
+    bottom: clamp(1rem, 3vw, 2rem);
+    z-index: 5;
+    padding: 0.8rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 999px;
+    background: #2c2424;
+    color: #fff;
+    box-shadow: 0 12px 28px rgba(44, 36, 36, 0.24);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+#special-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.colophon-container {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper);
+    box-shadow: var(--shadow);
+}
+
+.colophon-container > h2 {
+    margin-bottom: 1.25rem;
+}
+
+.colophon-container > p + p {
+    margin-top: 1.25rem;
+}
+
+.colophon-container code {
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.3rem;
+    background: #f4e9e4;
+    color: var(--rose-dark);
+    font-size: 0.9em;
+}
+
+.team-section {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding-top: clamp(2rem, 4vw, 3rem);
+    border-top: 1px solid var(--line);
+}
+
+.team-section h2 {
+    margin-bottom: 1.5rem;
+}
+
+.team-photo {
+    width: min(100%, 25rem);
+    margin: 0 auto 2rem;
+    border: 5px solid #fff;
+    border-radius: 1rem;
+    box-shadow: 0 14px 32px rgba(58, 34, 39, 0.14);
+}
+
+.team-list {
+    display: grid;
+    gap: 0.85rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.team-list li {
+    padding: 1rem 1.15rem;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--rose);
+    border-radius: 0.75rem;
+    background: #fff;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .about-img {
+        float: none;
+        width: 100%;
+        max-width: 25rem;
+        margin: 0 0 1.25rem;
+    }
+
+    .help-widget {
+        display: none;
+    }
+}

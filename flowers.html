@@ -3,86 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Автор страницы: Саят Максатулы -->
-    <meta name="author" content="Саят Максатулы">
-    <title>Dielly Flowers — Каталог цветов</title>
-    <link rel="stylesheet" href="base.css">
-    <link rel="stylesheet" href="rasul.css">
+    <meta name="author" content="Rassul Tazhgulov">
+    <title>Цветы — Dielly Flowers &amp; Bags</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/rasul.css">
 </head>
 <body>
-    <!-- Используем header для вводной части сайта, где располагается логотип и главная навигация -->
     <header>
-        <h1>Dielly Flowers & Bags</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О магазине</a></li>
-                <li><a href="flowers.html">Каталог цветов</a></li>
-                <li><a href="bags.html">Каталог сумок</a></li>
-                <li><a href="order.html">Оформить заказ</a></li>
+                <li><a href="about.html">О бутике</a></li>
+                <li><a href="flowers.html" class="active">Цветы</a></li>
+                <li><a href="bags.html">Сумки</a></li>
+                <li><a href="order.html">Заказ</a></li>
+                <li><a href="login.html">Вход</a></li>
+                <li><a href="register.html">Регистрация</a></li>
                 <li><a href="colophon.html">О проекте</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section>
-            <h2>Каталог авторских букетов</h2>
-
-            <img src="images/photo_5.jpeg" alt="Свежие букеты с гортензией и хризантемами в Dielly Flowers" width="600">
-
-            <p>Добро пожаловать в основной раздел нашего магазина Dielly Flowers. Мы гордимся тем, что предлагаем жителям Астаны только самые свежие и качественные цветы. Каждый наш букет — это не просто набор растений, это настоящее произведение искусства, созданное нашими флористами с любовью и вниманием к деталям. В нашем ассортименте вы найдете нежные кустовые розы, стойкие хризантемы, объемные гортензии и экзотические композиции, которые идеально подойдут для любого торжества, будь то свадьба, день рождения, юбилей или просто желание сделать приятное близкому человеку без особого повода. А в качестве сладкого дополнения у нас всегда в наличии свежие бенто-тортики.</p>
-
-            <!-- Используем blockquote для выделения реальной цитаты владельца бизнеса, а cite для указания авторства -->
-            <blockquote>
-                <p>«Мы собираем каждый букет так, чтобы он дарил эмоции, а не просто стоял в вазе. Радуйте своих близких чаще.»</p>
-                <cite>— Сураншиев Баглан, владелец Dielly Flowers</cite>
-            </blockquote>
-
-            <h3>Прайс-лист и состав наших композиций</h3>
-            <!-- Используем сложную таблицу: caption для заголовка, thead/tbody для структуры, и атрибут scope в th для доступности (accessibility) -->
-            <table>
-                <caption>Актуальные цветочные композиции на витрине и их стоимость</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Название букета</th>
-                        <th scope="col">Основной состав</th>
-                        <th scope="col">Кому подойдет</th>
-                        <th scope="col">Цена (KZT)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">«Розовый комплимент»</th>
-                        <td>Розовые кустовые розы, флористическая губка, фирменная сумочка-пакет FRESH FLOWER.</td>
-                        <td>Идеально для свиданий и долгих прогулок, очень удобно носить в руке.</td>
-                        <td>10 000</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">«Белоснежная классика»</th>
-                        <td>Пышные белые хризантемы, полупрозрачная матовая упаковка, лента с принтом.</td>
-                        <td>Универсальный и очень стойкий подарок, который будет радовать свежестью неделями.</td>
-                        <td>12 000</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">«Лазурный контраст»</th>
-                        <td>Крупная синяя гортензия, белые хризантемы, стильная многослойная упаковка.</td>
-                        <td>Для любителей необычных сочетаний и ярких, объемных композиций.</td>
-                        <td>18 500</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p>Обратите внимание, что состав букетов может незначительно меняться в зависимости от сезонности цветов. Пожалуйста, уточняйте наличие конкретных сортов у наших менеджеров перед оформлением заказа.</p>
+        <section class="catalog-grid">
+            <h1 class="category-title">Эксклюзивные букеты</h1>
+            <article class="product-card">
+                <span class="badge-hit">Хит продаж</span>
+                <img src="images/2/101-rose.jpeg" alt="Букет из 101 розы">
+                <h3>101 роза</h3>
+                <p>Классика для особых случаев.</p>
+                <div class="product-price">50 000 ₸</div>
+                <a href="order.html" class="buy-btn">Заказать</a>
+            </article>
+            <article class="product-card">
+                <img src="images/2/korolevskaya-gortenzia.jpeg" alt="Букет королевской гортензии">
+                <h3>Королевская гортензия</h3>
+                <p>Изысканное сезонное предложение.</p>
+                <div class="product-price">100 000 ₸</div>
+                <a href="order.html" class="buy-btn">Заказать</a>
+            </article>
+            <article class="product-card">
+                <img src="images/2/trend-sezona.jpeg" alt="Букет-микс с гортензией">
+                <h3>Микс с гортензией</h3>
+                <p>Нежный тренд сезона.</p>
+                <div class="product-price">60 000 ₸</div>
+                <a href="order.html" class="buy-btn">Заказать</a>
+            </article>
+            <article class="product-card">
+                <img src="images/2/gortenzia.jpeg" alt="Букет гортензии">
+                <h3>Гортензия</h3>
+                <p>Любовь, выраженная в цветах.</p>
+                <div class="product-price">60 000 ₸</div>
+                <a href="order.html" class="buy-btn">Заказать</a>
+            </article>
+            <article class="product-card">
+                <img src="images/2/korzinka-lubvi.jpeg" alt="Корзинка с цветами">
+                <h3>Корзинка любви</h3>
+                <p>Композиция о нежности и любви.</p>
+                <div class="product-price">45 000 ₸</div>
+                <a href="order.html" class="buy-btn">Заказать</a>
+            </article>
+            <article class="product-card">
+                <img src="images/2/vozdushnaya-eustoma.jpeg" alt="Воздушная эустома">
+                <h3>Воздушная эустома</h3>
+                <p>Легкая, белоснежная и деликатная.</p>
+                <div class="product-price">65 000 ₸</div>
+                <a href="order.html" class="buy-btn">Заказать</a>
+            </article>
         </section>
     </main>
 
-    <!-- Используем footer для контактной информации и копирайта, которые должны быть на каждой странице -->
     <footer>
-        <p><strong>Адрес:</strong> проспект Аль-Фараби, 15/1, Астана</p>
-        <p><strong>Время работы:</strong> 10:00 - 00:00</p>
-        <p><strong>Телефон:</strong> <a href="tel:+77013805856">+7-701-380-58-56</a></p>
-        <p><strong>Instagram:</strong> @dielly_flowers</p>
-        <p>&copy; 2026 Dielly Flowers</p>
+        <p>Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
     </footer>
 </body>
 </html>

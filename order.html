@@ -3,81 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Оформление заказа - Dielly Flowers & Bags</title>
-    
-    <!-- Подключаем базу, затем личный файл (Демонстрация каскада) -->
-    <link rel="stylesheet" href="base.css">
-    <link rel="stylesheet" href="sayat.css">
-
-    <!-- Демонстрация Internal Style: Перебивает фон только для этой страницы -->
-    <style>
-        body { background-color: #fafafa; }
-    </style>
+    <meta name="author" content="Sayat Maksatuly">
+    <title>Оформление заказа — Dielly Flowers &amp; Bags</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sayat.css">
 </head>
 <body>
-    <header class="main-header">
+    <header>
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
-                <li><a href="flowers.html">Каталог цветов</a></li>
-                <li><a href="bags.html">Каталог сумок</a></li>
+                <li><a href="about.html">О бутике</a></li>
+                <li><a href="flowers.html">Цветы</a></li>
+                <li><a href="bags.html">Сумки</a></li>
                 <li><a href="order.html" class="active">Заказ</a></li>
+                <li><a href="login.html">Вход</a></li>
+                <li><a href="register.html">Регистрация</a></li>
+                <li><a href="colophon.html">О проекте</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="container">
-        <!-- Тот самый Grid-контейнер для сплит-экрана 60/40 -->
-        <section class="auth-split-layout">
-            
-            <article class="auth-promo">
-                <h2 id="order-title">Оформление заказа</h2>
-                <!-- Демонстрация Inline Style: Применен напрямую для перебивания цвета -->
-                <p style="color: #e91e63;">Оставьте свои данные, и мы свяжемся с вами за 5 минут.</p>
-                
-                <div class="promo-content">
-                    <!-- Демонстрация Float -->
-                    <img src="images/order-promo.jpg" alt="Сборка букета" class="float-img">
-                    <p class="static-text">Наши флористы используют только самые свежие цветы премиум-класса. Каждая сумка проходит ручную проверку перед отправкой клиенту.</p>
-                    <!-- Демонстрация Clear -->
-                    <div class="clearfix"></div> 
-                </div>
-            </article>
+    <main>
+        <section>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Оформление заказа</legend>
+                    <label for="orderName">Ваше имя:</label>
+                    <input type="text" id="orderName" name="name" placeholder="Введите ваше имя" required>
 
-            <aside class="auth-form-area">
-                <form action="#" method="POST" class="order-form">
-                    <fieldset>
-                        <legend>Ваши данные</legend>
-                        
-                        <label for="userName">Имя:</label>
-                        <input type="text" id="userName" name="name" required>
+                    <label for="orderPhone">Телефон:</label>
+                    <input type="tel" id="orderPhone" name="phone" placeholder="+7 (701) 380-58-56" required>
 
-                        <label for="userTel">Телефон:</label>
-                        <input type="tel" id="userTel" name="phone" required>
-                        
-                        <label for="userCity">Город:</label>
-                        <select id="userCity" name="city">
-                            <option value="astana">Астана</option>
-                            <option value="almaty">Алматы</option>
-                        </select>
-                        
-                        <button type="submit" class="submit-btn">Оформить</button>
-                    </fieldset>
-                </form>
-            </aside>
+                    <label for="productSelect">Выберите товар:</label>
+                    <select id="productSelect" name="product" required>
+                        <option value="" disabled selected>-- Нажмите для выбора --</option>
+                        <optgroup label="Эксклюзивные цветы">
+                            <option value="101-rose">101 роза (50 000 ₸)</option>
+                            <option value="gortenzia-royal">Королевская гортензия (100 000 ₸)</option>
+                            <option value="mix-gortenzia">Микс с гортензией (60 000 ₸)</option>
+                            <option value="love-basket">Корзинка любви (45 000 ₸)</option>
+                            <option value="eustoma">Воздушная эустома (65 000 ₸)</option>
+                        </optgroup>
+                        <optgroup label="Дизайнерские сумки">
+                            <option value="shopper">Фирменный шопер (45 000 ₸)</option>
+                            <option value="gucci">Сумка Gucci (35 000 ₸)</option>
+                            <option value="fendi">Сумка Fendi (55 000 ₸)</option>
+                            <option value="hermes">Сумка Hermès (85 000 ₸)</option>
+                        </optgroup>
+                    </select>
 
+                    <label for="deliveryAddress">Адрес доставки:</label>
+                    <input type="text" id="deliveryAddress" name="address" placeholder="Улица, дом, квартира" required>
+
+                    <label for="orderComments">Текст для бесплатной открытки (необязательно):</label>
+                    <textarea id="orderComments" name="comments" rows="3"></textarea>
+
+                    <button type="submit">Подтвердить заказ</button>
+                </fieldset>
+            </form>
         </section>
     </main>
 
-    <!-- Демонстрация Fixed Positioning (кнопка чата) -->
-    <div class="chat-widget absolute-center-demo">
-        <span>Чат</span>
-    </div>
-
     <footer>
-        <address class="flex-center">
-            Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77010000000">+7 701 000-00-00</a>
-        </address>
+        <p>Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
     </footer>
 </body>
 </html>

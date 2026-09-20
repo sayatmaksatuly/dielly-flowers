@@ -3,48 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Автор страницы: Расул Тажгулов -->
-    <meta name="author" content="Расул Тажгулов">
-    <meta name="description" content="Официальная страница цветочного и сумочного магазина Dielly в Астане">
-    <title>Dielly Flowers & Bags — Главная</title>
-    <link rel="stylesheet" href="base.css">
-    <link rel="stylesheet" href="sayat.css">
+    <meta name="author" content="Sayat Maksatuly">
+    <title>Главная — Dielly Flowers &amp; Bags</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sayat.css">
 </head>
 <body>
-    <!-- Используем header для логотипа и основной навигации по сайту -->
     <header>
-        <h1>Dielly Flowers & Bags</h1>
-        <!-- Используем nav, так как он семантически определяет блок с главными ссылками -->
         <nav>
             <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О магазине</a></li>
-                <li><a href="flowers.html">Каталог цветов</a></li>
-                <li><a href="bags.html">Каталог сумок</a></li>
-                <li><a href="order.html">Оформить заказ</a></li>
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="about.html">О бутике</a></li>
+                <li><a href="flowers.html">Цветы</a></li>
+                <li><a href="bags.html">Сумки</a></li>
+                <li><a href="order.html">Заказ</a></li>
+                <li><a href="login.html">Вход</a></li>
+                <li><a href="register.html">Регистрация</a></li>
                 <li><a href="colophon.html">О проекте</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section>
+        <section class="about-shop">
             <h2>Добро пожаловать в Dielly</h2>
-            
-            <!-- Добавлено фото магазина. Атрибут alt обязателен для доступности (accessibility) -->
-            <img src="images/photo_9.jpeg" alt="Витрина магазина Dielly Flowers на проспекте Аль-Фараби" width="600">
-
-            <p>Мы рады приветствовать вас на официальном сайте магазина Dielly Flowers & Bags. Наш бутик, расположенный в самом сердце Астаны на проспекте Аль-Фараби, предлагает уникальный формат, объединяющий две главные женские страсти: изысканные цветочные композиции и стильные аксессуары. Мы верим, что идеальный подарок не обязательно должен быть скучным, именно поэтому мы собрали под одной крышей лучшие сорта цветов из Голландии и Эквадора, а также эксклюзивные модели женских сумок.</p>
-            <p>Наша миссия — помогать вам выражать свои чувства и радовать близких людей. В суете большого города так важно находить время для приятных сюрпризов. Независимо от того, нужен ли вам роскошный букет из 101 розы для признания в любви, или элегантная сумочка в качестве подарка на день рождения, наши консультанты всегда готовы помочь с выбором. Ознакомьтесь с нашими каталогами, узнайте больше о нашей истории и оформляйте заказ онлайн или по телефону.</p>
+            <img src="images/1/about.jpg" alt="Витрина магазина" class="about-img">
+            <p>Мы — эксклюзивный бутик в сердце Астаны. У нас вы найдете только самые свежие цветы и дизайнерские сумки.</p>
+            <p>Наши флористы собирают каждый букет вручную, а байеры привозят уникальные аксессуары со всего мира.</p>
+            <div class="clearfix"></div>
         </section>
     </main>
 
+    <div class="help-widget">Нужна помощь?</div>
+
     <footer>
-        <p><strong>Адрес:</strong> проспект Аль-Фараби, 15/1, Астана</p>
-        <p><strong>Время работы:</strong> 10:00 - 00:00</p>
-        <p><strong>Телефон:</strong> <a href="tel:+77013805856">+7-701-380-58-56</a></p>
-        <p><strong>Instagram:</strong> @dielly_flowers</p>
-        <p>&copy; 2026 Dielly Flowers</p>
+        <p>Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
     </footer>
 </body>
 </html>

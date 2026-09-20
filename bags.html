@@ -3,57 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Автор страницы: Расул Тажгулов -->
-    <meta name="author" content="Расул Тажгулов">
-    <title>Dielly Flowers — Каталог сумок</title>
-    <link rel="stylesheet" href="base.css">
-    <link rel="stylesheet" href="rasul.css">
+    <meta name="author" content="Rassul Tazhgulov">
+    <title>Сумки — Dielly Flowers &amp; Bags</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/rasul.css">
 </head>
 <body>
     <header>
-        <h1>Dielly Flowers & Bags</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О магазине</a></li>
-                <li><a href="flowers.html">Каталог цветов</a></li>
-                <li><a href="bags.html">Каталог сумок</a></li>
-                <li><a href="order.html">Оформить заказ</a></li>
+                <li><a href="about.html">О бутике</a></li>
+                <li><a href="flowers.html">Цветы</a></li>
+                <li><a href="bags.html" class="active">Сумки</a></li>
+                <li><a href="order.html">Заказ</a></li>
+                <li><a href="login.html">Вход</a></li>
+                <li><a href="register.html">Регистрация</a></li>
                 <li><a href="colophon.html">О проекте</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section>
-            <h2>Эксклюзивные сумки и аксессуары</h2>
-
-            <img src="images/photo_8.jpeg" alt="Ассортимент женских сумок в магазине Dielly" width="600">
-
-            <p>Отдел аксессуаров в Dielly — это наша особая гордость. Мы понимаем, что сумочка для женщины — это не просто предмет гардероба для хранения вещей, а важное дополнение к образу, отражающее ее характер и стиль. В нашем ассортименте представлены как повседневные базовые модели, так и нарядные клатчи для особых вечерних выходов. Мы привозим качественные изделия из экокожи и натуральных материалов, делая акцент на надежной фурнитуре и безупречном пошиве.</p>
-            
-            <p>Наш ассортимент постоянно обновляется в зависимости от сезона. Мы предлагаем различные формы и размеры: от вместительных шопперов до элегантных кросс-боди. Ознакомьтесь с основными категориями нашего каталога ниже, чтобы найти идеальную сумочку для себя или в подарок.</p>
-
-            <h3>Популярные категории сумок:</h3>
-            <dl>
-                <dt><strong>Повседневные тоуты (Tote bags)</strong></dt>
-                <dd>Вместительные и практичные сумки жесткой формы. Идеально подходят для деловых женщин, которым необходимо носить с собой документы формата А4 или небольшой ноутбук. Цена: от 25 000 KZT.</dd>
-                
-                <dt><strong>Вечерние клатчи</strong></dt>
-                <dd>Миниатюрные изящные сумочки без ручек или на тонкой цепочке. Доступны в базовых цветах, а также с декоративными элементами для торжественных мероприятий. Цена: от 15 000 KZT.</dd>
-                
-                <dt><strong>Кросс-боди (Cross-body)</strong></dt>
-                <dd>Удобные сумки через плечо среднего размера на длинном ремешке. Отличный вариант для прогулок по городу и повседневной носки, оставляют руки свободными. Цена: от 18 000 KZT.</dd>
-            </dl>
+        <section class="catalog-grid">
+            <h1 class="category-title">Дизайнерские сумки</h1>
+            <article class="product-card">
+                <span class="badge-hit">Новинка</span>
+                <img src="images/2/gucci.jpeg" alt="Сумка Gucci">
+                <h3>Сумка Gucci</h3>
+                <p>Ваш идеальный образ начинается с Gucci.</p>
+                <div class="product-price">35 000 ₸</div>
+                <a href="order.html" class="buy-btn">Заказать</a>
+            </article>
+            <article class="product-card">
+                <img src="images/2/hermes.jpeg" alt="Сумка Hermès из натуральной кожи">
+                <h3>Сумка Hermès</h3>
+                <p>Натуральная кожа и премиальное качество.</p>
+                <div class="product-price">85 000 ₸</div>
+                <a href="order.html" class="buy-btn">Заказать</a>
+            </article>
+            <article class="product-card">
+                <span class="badge-hit">Хит продаж</span>
+                <img src="images/2/shopper.jpeg" alt="Фирменный шопер">
+                <h3>Фирменный шопер</h3>
+                <p>Идеален на каждый день — вместит всё необходимое.</p>
+                <div class="product-price">45 000 ₸</div>
+                <a href="order.html" class="buy-btn">Заказать</a>
+            </article>
+            <article class="product-card">
+                <img src="images/2/fendi.jpeg" alt="Сумка Fendi">
+                <h3>Сумка Fendi</h3>
+                <p>Стильный и удобный выбор для повседневных образов.</p>
+                <div class="product-price">55 000 ₸</div>
+                <a href="order.html" class="buy-btn">Заказать</a>
+            </article>
         </section>
     </main>
 
     <footer>
-        <p><strong>Адрес:</strong> проспект Аль-Фараби, 15/1, Астана</p>
-        <p><strong>Время работы:</strong> 10:00 - 00:00</p>
-        <p><strong>Телефон:</strong> <a href="tel:+77013805856">+7-701-380-58-56</a></p>
-        <p><strong>Instagram:</strong> @dielly_flowers</p>
-        <p>&copy; 2026 Dielly Flowers</p>
+        <p>Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
     </footer>
 </body>
 </html>

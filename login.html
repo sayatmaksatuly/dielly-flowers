@@ -3,56 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход - Dielly Flowers & Bags</title>
-    <link rel="stylesheet" href=base.css">
-    <link rel="stylesheet" href="sayat.css">
+    <meta name="author" content="Sayat Maksatuly">
+    <title>Вход — Dielly Flowers &amp; Bags</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sayat.css">
 </head>
 <body>
     <header>
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
-                <li><a href="flowers.html">Каталог цветов</a></li>
-                <li><a href="bags.html">Каталог сумок</a></li>
+                <li><a href="about.html">О бутике</a></li>
+                <li><a href="flowers.html">Цветы</a></li>
+                <li><a href="bags.html">Сумки</a></li>
+                <li><a href="order.html">Заказ</a></li>
+                <li><a href="login.html" class="active">Вход</a></li>
+                <li><a href="register.html">Регистрация</a></li>
+                <li><a href="colophon.html">О проекте</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <!-- Этот section завтра станет Grid-контейнером 60/40 -->
         <section class="auth-split-layout">
-            
-            <!-- Левая часть (Лендинг - 60%) -->
             <article class="auth-promo">
                 <h2>С возвращением в Dielly!</h2>
-                <p>Войдите в личный кабинет, чтобы отслеживать статусы доставки цветов и получать эксклюзивные скидки на новые коллекции сумок.</p>
-                <!-- Не забудь потом закинуть реальную картинку в папку images -->
-                <img src="images/login-promo.jpg" alt="Красивый букет роз">
+                <p id="special-text" class="auth-text">Войдите в личный кабинет, чтобы отслеживать статусы доставки.</p>
+                <img src="images/2/vozdushnaya-eustoma.jpeg" alt="Красивый букет">
             </article>
 
-            <!-- Правая часть (Форма - 40%) -->
             <aside class="auth-form-area">
-                <form action="#" method="POST">
+                <form action="#" method="post">
                     <fieldset>
                         <legend>Авторизация</legend>
-                        
                         <label for="loginEmail">Email:</label>
                         <input type="email" id="loginEmail" name="email" required>
-                        
                         <label for="loginPass">Пароль:</label>
                         <input type="password" id="loginPass" name="password" required>
-                        
                         <button type="submit">Войти</button>
                     </fieldset>
                     <p>Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
                 </form>
             </aside>
-
         </section>
     </main>
 
     <footer>
-        <address>Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77010000000">+7 701 000-00-00</a></address>
+        <p>Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
     </footer>
 </body>
 </html>
