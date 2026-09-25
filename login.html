@@ -5,51 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Sayat Maksatuly">
     <title>Вход — Dielly Flowers &amp; Bags</title>
+    <!-- Bootstrap 5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/sayat.css">
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О бутике</a></li>
-                <li><a href="flowers.html">Цветы</a></li>
-                <li><a href="bags.html">Сумки</a></li>
-                <li><a href="order.html">Заказ</a></li>
-                <li><a href="login.html" class="active">Вход</a></li>
-                <li><a href="register.html">Регистрация</a></li>
-                <li><a href="colophon.html">О проекте</a></li>
-            </ul>
+<body class="d-flex flex-column min-vh-100">
+    <header class="site-header">
+        <nav class="navbar navbar-expand-xl" aria-label="Основная навигация">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand fw-semibold" href="index.html">Dielly</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Открыть меню">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="siteNav">
+                    <ul class="navbar-nav ms-auto align-items-xl-center gap-xl-1">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">О бутике</a></li>
+                        <li class="nav-item"><a class="nav-link" href="flowers.html">Цветы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="bags.html">Сумки</a></li>
+                        <li class="nav-item"><a class="nav-link" href="order.html">Заказ</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="login.html">Вход</a></li>
+                        <li class="nav-item"><a class="nav-link" href="register.html">Регистрация</a></li>
+                        <li class="nav-item"><a class="nav-link" href="colophon.html">О проекте</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section class="auth-split-layout">
-            <article class="auth-promo">
+    <main class="container-fluid p-0">
+        <section class="row g-0">
+            <article class="auth-promo col-12 col-lg-6 p-4 p-md-5 text-white">
                 <h2>С возвращением в Dielly!</h2>
-                <p id="special-text" class="auth-text">Войдите в личный кабинет, чтобы отслеживать статусы доставки.</p>
-                <img src="images/2/vozdushnaya-eustoma.jpeg" alt="Красивый букет">
+                <p id="special-text" class="lead mt-3">Войдите в личный кабинет, чтобы отслеживать статусы доставки.</p>
+                <img src="images/2/vozdushnaya-eustoma.jpeg" alt="Красивый букет" class="img-fluid rounded-3 mt-4 auth-photo">
             </article>
 
-            <aside class="auth-form-area">
-                <form action="#" method="post">
-                    <fieldset>
-                        <legend>Авторизация</legend>
-                        <label for="loginEmail">Email:</label>
-                        <input type="email" id="loginEmail" name="email" required>
-                        <label for="loginPass">Пароль:</label>
-                        <input type="password" id="loginPass" name="password" required>
-                        <button type="submit">Войти</button>
+            <aside class="col-12 col-lg-6 p-4 p-md-5 d-flex align-items-center justify-content-center">
+                <form class="auth-form bg-white border rounded-4 shadow-sm p-4">
+                    <fieldset class="border-0 p-0">
+                        <legend class="h3 mb-3">Авторизация</legend>
+                        <label class="form-label fw-semibold mt-3" for="loginEmail">Email:</label>
+                        <input class="form-control" type="email" id="loginEmail" name="email" required>
+                        <label class="form-label fw-semibold mt-3" for="loginPass">Пароль:</label>
+                        <input class="form-control" type="password" id="loginPass" name="password" required>
+                        <button class="btn btn-primary w-100 mt-4" type="button" disabled>Войти</button>
+                        <p class="small text-secondary mt-2 mb-0">Демо-форма: отправка пока недоступна.</p>
                     </fieldset>
-                    <p>Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
+                    <p class="text-center mt-3 mb-0">Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
                 </form>
             </aside>
         </section>
     </main>
 
-    <footer>
+    <footer class="mt-auto py-4 text-center">
         <p>Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

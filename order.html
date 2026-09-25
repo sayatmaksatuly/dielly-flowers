@@ -5,43 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Sayat Maksatuly">
     <title>Оформление заказа — Dielly Flowers &amp; Bags</title>
+    <!-- Bootstrap 5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/sayat.css">
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О бутике</a></li>
-                <li><a href="flowers.html">Цветы</a></li>
-                <li><a href="bags.html">Сумки</a></li>
-                <li><a href="order.html" class="active">Заказ</a></li>
-                <li><a href="login.html">Вход</a></li>
-                <li><a href="register.html">Регистрация</a></li>
-                <li><a href="colophon.html">О проекте</a></li>
-            </ul>
+<body class="d-flex flex-column min-vh-100">
+    <header class="site-header">
+        <nav class="navbar navbar-expand-xl" aria-label="Основная навигация">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand fw-semibold" href="index.html">Dielly</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Открыть меню">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="siteNav">
+                    <ul class="navbar-nav ms-auto align-items-xl-center gap-xl-1">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">О бутике</a></li>
+                        <li class="nav-item"><a class="nav-link" href="flowers.html">Цветы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="bags.html">Сумки</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="order.html">Заказ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.html">Вход</a></li>
+                        <li class="nav-item"><a class="nav-link" href="register.html">Регистрация</a></li>
+                        <li class="nav-item"><a class="nav-link" href="colophon.html">О проекте</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section>
-            <form action="#" method="post">
-                <fieldset>
-                    <legend>Оформление заказа</legend>
-                    <label for="orderName">Ваше имя:</label>
-                    <input type="text" id="orderName" name="name" placeholder="Введите ваше имя" required>
+    <main class="container py-5">
+        <section class="mx-auto order-section">
+            <form class="bg-white border rounded-4 shadow-sm p-4 p-md-5">
+                <fieldset class="border-0 p-0">
+                    <legend class="h2 mb-3">Оформление заказа</legend>
+                    <label class="form-label fw-semibold mt-3" for="orderName">Ваше имя:</label>
+                    <input class="form-control" type="text" id="orderName" name="name" placeholder="Введите ваше имя" required>
 
-                    <label for="orderPhone">Телефон:</label>
-                    <input type="tel" id="orderPhone" name="phone" placeholder="+7 (701) 380-58-56" required>
+                    <label class="form-label fw-semibold mt-3" for="orderPhone">Телефон:</label>
+                    <input class="form-control" type="tel" id="orderPhone" name="phone" placeholder="+7 (701) 380-58-56" required>
 
-                    <label for="productSelect">Выберите товар:</label>
-                    <select id="productSelect" name="product" required>
+                    <label class="form-label fw-semibold mt-3" for="productSelect">Выберите товар:</label>
+                    <select class="form-select" id="productSelect" name="product" required>
                         <option value="" disabled selected>-- Нажмите для выбора --</option>
                         <optgroup label="Эксклюзивные цветы">
                             <option value="101-rose">101 роза (50 000 ₸)</option>
                             <option value="gortenzia-royal">Королевская гортензия (100 000 ₸)</option>
                             <option value="mix-gortenzia">Микс с гортензией (60 000 ₸)</option>
+                            <option value="gortenzia">Гортензия (60 000 ₸)</option>
                             <option value="love-basket">Корзинка любви (45 000 ₸)</option>
                             <option value="eustoma">Воздушная эустома (65 000 ₸)</option>
                         </optgroup>
@@ -53,20 +64,22 @@
                         </optgroup>
                     </select>
 
-                    <label for="deliveryAddress">Адрес доставки:</label>
-                    <input type="text" id="deliveryAddress" name="address" placeholder="Улица, дом, квартира" required>
+                    <label class="form-label fw-semibold mt-3" for="deliveryAddress">Адрес доставки:</label>
+                    <input class="form-control" type="text" id="deliveryAddress" name="address" placeholder="Улица, дом, квартира" required>
 
-                    <label for="orderComments">Текст для бесплатной открытки (необязательно):</label>
-                    <textarea id="orderComments" name="comments" rows="3"></textarea>
+                    <label class="form-label fw-semibold mt-3" for="orderComments">Текст для бесплатной открытки (необязательно):</label>
+                    <textarea class="form-control" id="orderComments" name="comments" rows="3"></textarea>
 
-                    <button type="submit">Подтвердить заказ</button>
+                    <button class="btn btn-primary mt-4" type="button" disabled>Подтвердить заказ</button>
+                    <p class="small text-secondary mt-2 mb-0">Демо-форма: отправка пока недоступна.</p>
                 </fieldset>
             </form>
         </section>
     </main>
 
-    <footer>
+    <footer class="mt-auto py-4 text-center">
         <p>Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -5,46 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Sayat Maksatuly">
     <title>О проекте — Dielly Flowers &amp; Bags</title>
+    <!-- Bootstrap 5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/sayat.css">
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О бутике</a></li>
-                <li><a href="flowers.html">Цветы</a></li>
-                <li><a href="bags.html">Сумки</a></li>
-                <li><a href="order.html">Заказ</a></li>
-                <li><a href="login.html">Вход</a></li>
-                <li><a href="register.html">Регистрация</a></li>
-                <li><a href="colophon.html" class="active">О проекте</a></li>
-            </ul>
+<body class="d-flex flex-column min-vh-100">
+    <header class="site-header">
+        <nav class="navbar navbar-expand-xl" aria-label="Основная навигация">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand fw-semibold" href="index.html">Dielly</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Открыть меню">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="siteNav">
+                    <ul class="navbar-nav ms-auto align-items-xl-center gap-xl-1">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">О бутике</a></li>
+                        <li class="nav-item"><a class="nav-link" href="flowers.html">Цветы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="bags.html">Сумки</a></li>
+                        <li class="nav-item"><a class="nav-link" href="order.html">Заказ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.html">Вход</a></li>
+                        <li class="nav-item"><a class="nav-link" href="register.html">Регистрация</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="colophon.html">О проекте</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section class="colophon-container">
-            <h2>О создании сайта</h2>
-            <p>Добро пожаловать на страницу Colophon. Этот сайт разрабатывается в рамках заданий по курсу Web Technologies. Нашей главной целью было создание структурированного, доступного и семантически правильного веб-сайта с использованием чистого HTML5 и современного CSS — Grid, Flexbox, позиционирования и псевдоклассов — без применения JS-фреймворков или готовых визуальных шаблонов.</p>
+    <main class="container py-5">
+        <section class="colophon-container bg-white border rounded-4 shadow-sm p-4 p-md-5 mx-auto">
+            <h1 class="h2 mb-4">О создании сайта</h1>
+            <p>Добро пожаловать на страницу Colophon. Этот сайт разрабатывается в рамках заданий по курсу Web Technologies. Нашей главной целью было создание структурированного, доступного и семантически правильного веб-сайта с использованием семантического HTML5 и CSS. Для Assignment 3 мы добавили Bootstrap 5.3.8 для сетки, адаптивной навигации и карточек каталога, сохранив оформление магазина без готового шаблона.</p>
             <p>Для контента мы выбрали реальный локальный бизнес — магазин цветов и аксессуаров «Dielly», расположенный в Астане на проспекте Аль-Фараби. Поскольку владельцем бизнеса является родственник одного из участников команды, мы смогли лично посетить точку, сделать авторские фотографии товаров, зафиксировать актуальный прайс-лист и получить подлинную цитату владельца для главной страницы.</p>
             <p>В процессе разработки мы строго придерживались стандартов W3C. Мы использовали семантические теги <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code> и <code>footer</code> на каждой странице. Для доступности мы связывали метки <code>label</code> с полями <code>input</code> через атрибуты <code>id</code> и <code>for</code>.</p>
 
-            <div class="team-section">
-                <h2>Наша команда</h2>
-                <img src="images/1/photo_10.jpeg" alt="Разработчики проекта" class="team-photo">
-                <ul class="team-list">
-                    <li>👤 <strong>Zhibek Sarsenova</strong> — Наставник (Instructor)</li>
-                    <li>👤 <strong>Sayat Maksatuly</strong> — Frontend-разработчик. Отвечал за настройку репозитория Git, CSS-архитектуру, макеты авторизации, оформление заказа и семантику отчетов.</li>
-                    <li>👤 <strong>Rassul Tazhgulov</strong> — Backend-разработчик. Взял на себя проектирование баз данных, логику сетки каталогов, интеграцию медиафайлов и структуру главных страниц.</li>
+            <div class="team-section border-top mt-5 pt-4">
+                <h2 class="h3 mb-4">Наша команда</h2>
+                <img src="images/1/photo_10.jpeg" alt="Разработчики проекта" class="team-photo img-fluid rounded-3 d-block mx-auto mb-4">
+                <ul class="list-group">
+                    <li class="list-group-item">👤 <strong>Zhibek Sarsenova</strong> — Наставник (Instructor)</li>
+                    <li class="list-group-item">👤 <strong>Sayat Maksatuly</strong> — Frontend-разработчик. Отвечал за настройку репозитория Git, CSS-архитектуру, макеты авторизации, оформление заказа и семантику отчетов.</li>
+                    <li class="list-group-item">👤 <strong>Rassul Tazhgulov</strong> — Backend-разработчик. Взял на себя проектирование баз данных, логику сетки каталогов, интеграцию медиафайлов и структуру главных страниц.</li>
                 </ul>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="mt-auto py-4 text-center">
         <p>Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
