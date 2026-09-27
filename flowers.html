@@ -13,6 +13,7 @@
 <body class="d-flex flex-column min-vh-100">
     <header class="site-header">
         <nav class="navbar navbar-expand-xl" aria-label="Основная навигация">
+            <!-- container-fluid keeps the navigation full width. -->
             <div class="container-fluid px-3 px-lg-4">
                 <a class="navbar-brand fw-semibold" href="index.html">Dielly</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Открыть меню">
@@ -36,14 +37,17 @@
 
     <main class="container py-5">
         <section>
-            <h1 class="text-center mb-4">Эксклюзивные букеты</h1>
+            <div class="text-center mb-4 mb-md-5">
+                <p class="eyebrow mb-2">Коллекция Dielly · Букеты</p>
+                <h1 class="mb-0">Эксклюзивные букеты</h1>
+            </div>
             <!-- Bootstrap Card component: adapted to show the existing products. -->
             <div class="row g-4">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 border-0 shadow-sm">
+                    <article class="card product-card h-100 border-0 shadow-sm">
                         <img src="images/2/101-rose.jpeg" alt="Букет из 101 розы" class="card-img-top img-fluid product-photo">
                         <div class="card-body d-flex flex-column">
-                            <span class="badge text-bg-warning align-self-start mb-2">Хит продаж</span>
+                            <span class="badge product-badge align-self-start mb-2">Хит продаж</span>
                             <h2 class="card-title h5">101 роза</h2>
                             <p class="card-text text-secondary">Классика для особых случаев.</p>
                             <p class="product-price fw-bold mt-auto mb-3">50 000 ₸</p>
@@ -52,7 +56,7 @@
                     </article>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 border-0 shadow-sm">
+                    <article class="card product-card h-100 border-0 shadow-sm">
                         <img src="images/2/korolevskaya-gortenzia.jpeg" alt="Букет королевской гортензии" class="card-img-top img-fluid product-photo">
                         <div class="card-body d-flex flex-column">
                             <h2 class="card-title h5">Королевская гортензия</h2>
@@ -63,7 +67,7 @@
                     </article>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 border-0 shadow-sm">
+                    <article class="card product-card h-100 border-0 shadow-sm">
                         <img src="images/2/trend-sezona.jpeg" alt="Букет-микс с гортензией" class="card-img-top img-fluid product-photo">
                         <div class="card-body d-flex flex-column">
                             <h2 class="card-title h5">Микс с гортензией</h2>
@@ -74,7 +78,7 @@
                     </article>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 border-0 shadow-sm">
+                    <article class="card product-card h-100 border-0 shadow-sm">
                         <img src="images/2/gortenzia.jpeg" alt="Букет гортензии" class="card-img-top img-fluid product-photo">
                         <div class="card-body d-flex flex-column">
                             <h2 class="card-title h5">Гортензия</h2>
@@ -85,7 +89,7 @@
                     </article>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 border-0 shadow-sm">
+                    <article class="card product-card h-100 border-0 shadow-sm">
                         <img src="images/2/korzinka-lubvi.jpeg" alt="Корзинка с цветами" class="card-img-top img-fluid product-photo">
                         <div class="card-body d-flex flex-column">
                             <h2 class="card-title h5">Корзинка любви</h2>
@@ -96,7 +100,7 @@
                     </article>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 border-0 shadow-sm">
+                    <article class="card product-card h-100 border-0 shadow-sm">
                         <img src="images/2/vozdushnaya-eustoma.jpeg" alt="Воздушная эустома" class="card-img-top img-fluid product-photo">
                         <div class="card-body d-flex flex-column">
                             <h2 class="card-title h5">Воздушная эустома</h2>
@@ -111,7 +115,7 @@
     </main>
 
     <footer class="mt-auto py-4 text-center">
-        <p>Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
+        <p class="mb-0">Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
