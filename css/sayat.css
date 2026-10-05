@@ -1,1 +1,3 @@
-.welcome-note { border-left: 3px solid var(--rose); }
+.welcome-note {
+    border-left: 3px solid var(--rose);
+}

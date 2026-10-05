@@ -16,10 +16,10 @@
             <!-- container-fluid keeps the navigation full width. -->
             <div class="container-fluid px-3 px-lg-4">
                 <a class="navbar-brand fw-semibold" href="index.html">Dielly</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Открыть меню">
+                <button id="site-nav-toggle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Открыть меню">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="siteNav">
+                <div class="collapse navbar-collapse" id="site-nav">
                     <ul class="navbar-nav ms-auto align-items-xl-center gap-xl-1">
                         <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">О бутике</a></li>
@@ -28,39 +28,45 @@
                         <li class="nav-item"><a class="nav-link" href="order.html">Заказ</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="login.html">Вход</a></li>
                         <li class="nav-item"><a class="nav-link" href="register.html">Регистрация</a></li>
-                        <li class="nav-item"><a class="nav-link" href="colophon.html">О проекте</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="container-fluid p-0">
+    <main class="container-fluid flex-grow-1 p-0">
         <section class="row g-0">
-            <article class="auth-promo col-12 col-lg-6 p-4 p-md-5 text-white">
+            <article class="auth-promo col-12 col-lg-6 p-3 p-sm-4 p-md-5 text-white">
                 <h1 class="h2">С возвращением в Dielly!</h1>
-                <p class="lead mt-3">Войдите в личный кабинет, чтобы отслеживать статусы доставки.</p>
+                <p class="lead mt-3">Для подготовки заказа вход не требуется.</p>
+                <p class="mb-0">Вы можете сразу <a class="link-light fw-semibold" href="order.html">перейти к заказу</a>.</p>
                 <img src="images/2/vozdushnaya-eustoma.jpeg" alt="Букет белой эустомы" class="auth-photo img-fluid w-100 rounded-3 mt-4 d-none d-md-block">
             </article>
 
-            <aside class="col-12 col-lg-6 p-4 p-md-5 d-flex align-items-center justify-content-center">
-                <form class="auth-form bg-white border rounded-4 shadow-sm p-4">
+            <aside class="col-12 col-lg-6 p-3 p-sm-4 p-md-5 d-flex align-items-center justify-content-center">
+                <form id="login-form" class="auth-form bg-white border rounded-4 shadow-sm p-3 p-sm-4">
                     <fieldset class="border-0 p-0">
                         <legend class="h3 mb-3">Авторизация</legend>
-                        <label class="form-label fw-semibold mt-3" for="loginEmail">Email:</label>
-                        <input class="form-control" type="email" id="loginEmail" name="email" required>
-                        <label class="form-label fw-semibold mt-3" for="loginPass">Пароль:</label>
-                        <input class="form-control" type="password" id="loginPass" name="password" required>
-                        <button class="btn btn-primary w-100 mt-4" type="button" disabled>Войти</button>
-                        <p class="small text-secondary mt-2 mb-0">Демо-форма: отправка пока недоступна.</p>
+                        <label class="form-label fw-semibold mt-3" for="login-email">Email:</label>
+                        <input class="form-control" type="email" id="login-email" name="email" required>
+                        <label class="form-label fw-semibold mt-3" for="login-password">Пароль:</label>
+                        <input class="form-control" type="password" id="login-password" name="password" required>
+                        <div id="login-errors" class="alert alert-danger d-none mt-4" role="alert"></div>
+                        <button id="login-submit" class="btn btn-primary w-100 mt-4" type="button">Войти</button>
+                        <p class="small text-secondary mt-2 mb-0">Данные не отправляются. Проверка учётной записи не выполняется.</p>
                     </fieldset>
+                    <section id="login-result" class="border-top mt-4 pt-3" aria-labelledby="login-result-title">
+                        <h2 id="login-result-title" class="h5">Результат</h2>
+                        <p class="mb-2">Вход не выполнен.</p>
+                        <div id="login-message" class="alert alert-success d-none mb-0" role="status"></div>
+                    </section>
                     <p class="text-center mt-3 mb-0">Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
                 </form>
             </aside>
         </section>
     </main>
 
-    <footer class="mt-auto py-4 text-center">
+    <footer class="mt-auto py-4 px-3 text-center">
         <p class="mb-0">Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

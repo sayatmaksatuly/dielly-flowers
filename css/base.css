@@ -47,7 +47,6 @@ a:hover { color: var(--rose); }
 .product-photo-bottom { object-position: center 60%; }
 .about-photo { width: 100%; max-height: 34rem; object-fit: cover; }
 .auth-photo { max-height: 19rem; object-fit: cover; }
-.team-photo { width: 100%; max-width: 25rem; }
 
 .card { border-radius: 1rem; overflow: hidden; }
 .product-card { transition: transform .2s ease, box-shadow .2s ease; }
@@ -79,7 +78,6 @@ a:hover { color: var(--rose); }
 .auth-promo { background: var(--rose-dark); }
 .auth-form { width: 100%; max-width: 28rem; }
 .order-section { max-width: 42rem; }
-.colophon-container { max-width: 62rem; }
 
 footer { background: #30272a; color: #fbf6f3; }
 footer a { color: #f3d4aa; }

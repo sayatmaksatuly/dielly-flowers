@@ -16,10 +16,10 @@
             <!-- container-fluid keeps the navigation full width. -->
             <div class="container-fluid px-3 px-lg-4">
                 <a class="navbar-brand fw-semibold" href="index.html">Dielly</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Открыть меню">
+                <button id="site-nav-toggle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Открыть меню">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="siteNav">
+                <div class="collapse navbar-collapse" id="site-nav">
                     <ul class="navbar-nav ms-auto align-items-xl-center gap-xl-1">
                         <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">О бутике</a></li>
@@ -28,31 +28,30 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="order.html">Заказ</a></li>
                         <li class="nav-item"><a class="nav-link" href="login.html">Вход</a></li>
                         <li class="nav-item"><a class="nav-link" href="register.html">Регистрация</a></li>
-                        <li class="nav-item"><a class="nav-link" href="colophon.html">О проекте</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="container py-5">
+    <main class="container flex-grow-1 py-4 py-md-5">
         <section class="mx-auto order-section">
             <div class="text-center mb-4">
                 <p class="eyebrow mb-2">Dielly Flowers &amp; Bags</p>
                 <h1 class="h2 mb-0">Оформление заказа</h1>
             </div>
-            <form class="bg-white border rounded-4 shadow-sm p-4 p-md-5">
+            <form id="order-form" class="bg-white border rounded-4 shadow-sm p-3 p-sm-4 p-md-5">
                 <fieldset class="border-0 p-0">
                     <legend class="h4 mb-3">Данные для доставки</legend>
                     <p class="welcome-note ps-3 py-1 text-secondary">Выберите товар и укажите адрес доставки.</p>
-                    <label class="form-label fw-semibold mt-3" for="orderName">Ваше имя:</label>
-                    <input class="form-control" type="text" id="orderName" name="name" placeholder="Введите ваше имя" required>
+                    <label class="form-label fw-semibold mt-3" for="order-name">Ваше имя:</label>
+                    <input class="form-control" type="text" id="order-name" name="name" placeholder="Введите ваше имя" required>
 
-                    <label class="form-label fw-semibold mt-3" for="orderPhone">Телефон:</label>
-                    <input class="form-control" type="tel" id="orderPhone" name="phone" placeholder="+7 (701) 380-58-56" required>
+                    <label class="form-label fw-semibold mt-3" for="order-phone">Телефон:</label>
+                    <input class="form-control" type="tel" id="order-phone" name="phone" placeholder="+7 (701) 380-58-56" required>
 
-                    <label class="form-label fw-semibold mt-3" for="productSelect">Выберите товар:</label>
-                    <select class="form-select" id="productSelect" name="product" required>
+                    <label class="form-label fw-semibold mt-3" for="order-product">Выберите товар:</label>
+                    <select class="form-select" id="order-product" name="product" required>
                         <option value="" disabled selected>-- Нажмите для выбора --</option>
                         <optgroup label="Эксклюзивные цветы">
                             <option value="101-rose">101 роза (50 000 ₸)</option>
@@ -70,20 +69,32 @@
                         </optgroup>
                     </select>
 
-                    <label class="form-label fw-semibold mt-3" for="deliveryAddress">Адрес доставки:</label>
-                    <input class="form-control" type="text" id="deliveryAddress" name="address" placeholder="Улица, дом, квартира" required>
+                    <label class="form-label fw-semibold mt-3" for="order-address">Адрес доставки:</label>
+                    <input class="form-control" type="text" id="order-address" name="address" placeholder="Улица, дом, квартира" required>
 
-                    <label class="form-label fw-semibold mt-3" for="orderComments">Текст для бесплатной открытки (необязательно):</label>
-                    <textarea class="form-control" id="orderComments" name="comments" rows="3"></textarea>
-
-                    <button class="btn btn-primary mt-4" type="button" disabled>Подтвердить заказ</button>
-                    <p class="small text-secondary mt-2 mb-0">Демо-форма: отправка пока недоступна.</p>
+                    <label class="form-label fw-semibold mt-3" for="order-comments">Текст для бесплатной открытки (необязательно):</label>
+                    <textarea class="form-control" id="order-comments" name="comments" rows="3"></textarea>
                 </fieldset>
+
+                <div id="order-summary" class="border rounded-3 p-3 mt-4">
+                    <h2 class="h5">Сводка заказа</h2>
+                    <p class="mb-0">Стоимость выбранного товара: <output id="order-total">не рассчитана</output></p>
+                </div>
+
+                <div id="order-errors" class="alert alert-danger d-none mt-4" role="alert"></div>
+                <button id="order-submit" class="btn btn-primary mt-4" type="button">Подтвердить заказ</button>
+                <p class="small text-secondary mt-2 mb-0">Данные не отправляются. Заказ можно подготовить, но не оформить на этом статическом сайте.</p>
+
+                <section id="order-result" class="border-top mt-4 pt-3" aria-labelledby="order-result-title">
+                    <h2 id="order-result-title" class="h5">Результат</h2>
+                    <p class="mb-2">Заказ не отправлен.</p>
+                    <div id="order-message" class="alert alert-success d-none mb-0" role="status"></div>
+                </section>
             </form>
         </section>
     </main>
 
-    <footer class="mt-auto py-4 text-center">
+    <footer class="mt-auto py-4 px-3 text-center">
         <p class="mb-0">Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

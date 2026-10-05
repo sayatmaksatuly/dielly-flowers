@@ -16,10 +16,10 @@
             <!-- container-fluid keeps the navigation full width. -->
             <div class="container-fluid px-3 px-lg-4">
                 <a class="navbar-brand fw-semibold" href="index.html">Dielly</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Открыть меню">
+                <button id="site-nav-toggle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Открыть меню">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="siteNav">
+                <div class="collapse navbar-collapse" id="site-nav">
                     <ul class="navbar-nav ms-auto align-items-xl-center gap-xl-1">
                         <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="about.html">О бутике</a></li>
@@ -28,14 +28,13 @@
                         <li class="nav-item"><a class="nav-link" href="order.html">Заказ</a></li>
                         <li class="nav-item"><a class="nav-link" href="login.html">Вход</a></li>
                         <li class="nav-item"><a class="nav-link" href="register.html">Регистрация</a></li>
-                        <li class="nav-item"><a class="nav-link" href="colophon.html">О проекте</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="container py-5">
+    <main class="container flex-grow-1 py-4 py-md-5">
         <section class="bg-white border rounded-4 shadow-sm p-4 p-md-5">
             <div class="row g-4 align-items-center">
                 <article class="col-12 col-lg-7">
@@ -54,14 +53,20 @@
 
                 <aside class="col-12 col-lg-5 order-first order-lg-last">
                     <img src="images/1/about.jpg" alt="Полки с сумками в бутике Dielly" class="img-fluid rounded-3 about-photo">
+                    <div class="reason-item rounded-3 p-3 mt-3">
+                        <h2 class="h5 mb-3">Посетите бутик</h2>
+                        <p class="mb-2"><strong>Адрес:</strong> пр. Аль-Фараби, 15/1, Астана</p>
+                        <p class="mb-2"><strong>Время работы:</strong> 10:00–00:00</p>
+                        <p class="mb-2"><strong>Телефон:</strong> <a href="tel:+77013805856">+7-701-380-5856</a></p>
+                        <p class="mb-0"><strong>Instagram:</strong> @dielly_flowers</p>
+                    </div>
                 </aside>
             </div>
         </section>
     </main>
 
-    <footer class="mt-auto py-4 text-center">
-        <p class="mb-0">Адрес: пр. Аль-Фараби, 15/1, Астана | Время работы: 10:00–00:00</p>
-        <p>Телефон: <a href="tel:+77013805856">+7-701-380-5856</a> | Instagram: @dielly_flowers</p>
+    <footer class="mt-auto py-4 px-3 text-center">
+        <p class="mb-0">Адрес: пр. Аль-Фараби, 15/1 | Телефон: <a href="tel:+77013805856">+7-701-380-5856</a></p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
