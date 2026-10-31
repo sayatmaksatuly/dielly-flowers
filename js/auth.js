@@ -1,32 +1,45 @@
 'use strict';
 
-(() => {
-    const form = document.getElementById('register-form') || document.getElementById('login-form');
-    if (!form || form.dataset.authReady === 'true') {
+// jQuery 3.7.1 full: ready starts after the form and shared helpers are available.
+$(function () {
+    const form = $('#register-form, #login-form').first();
+    if (!form.length || form.data('authReady')) {
         return;
     }
-    form.dataset.authReady = 'true';
+    form.data('authReady', true);
 
-    const registration = form.id === 'register-form';
+    const registration = form.attr('id') === 'register-form';
     const prefix = registration ? 'register' : 'login';
-    const name = document.getElementById(`${prefix}-name`);
-    const email = document.getElementById(`${prefix}-email`);
-    const password = document.getElementById(`${prefix}-password`);
-    const errors = document.getElementById(`${prefix}-errors`);
-    const message = document.getElementById(`${prefix}-message`);
-    const submit = document.getElementById(`${prefix}-submit`);
-    const fields = name ? [name, email, password] : [email, password];
+    const name = $(`#${prefix}-name`);
+    const email = $(`#${prefix}-email`);
+    const password = $(`#${prefix}-password`);
+    const errors = $(`#${prefix}-errors`);
+    const result = $(`#${prefix}-result`);
+    const message = $(`#${prefix}-message`);
+    const submit = $(`#${prefix}-submit`);
     const touched = new Set();
     let submitted = false;
+    let extraFieldNumber = 0;
 
-    form.noValidate = true;
-    submit.type = 'submit';
-    submit.textContent = registration ? 'Проверить регистрацию (демо)' : 'Проверить форму входа (демо)';
-    email.autocomplete = 'email';
-    password.autocomplete = registration ? 'new-password' : 'current-password';
-    if (name) {
-        name.autocomplete = 'name';
-    }
+    // Native constraints run first; invalid below also shows all inline jQuery errors.
+    form.prop('noValidate', false);
+    submit.prop('type', 'submit').text('Проверить данные');
+    email.attr('autocomplete', 'email');
+    password.attr('autocomplete', registration ? 'new-password' : 'current-password');
+    name.attr('autocomplete', 'name');
+
+    // Remove only these obsolete notes; labels, links, hints and errors stay in place.
+    const obsoleteNotes = [
+        'Данные не отправляются. Проверка учётной записи не выполняется.',
+        'Данные не отправляются. Учётная запись не сохраняется.',
+        'Вход не выполнен.', 'Учётная запись не создана.',
+        'Для подготовки заказа вход не требуется.',
+        'Выберите цветы или сумку и подготовьте заказ без регистрации.'
+    ];
+    form.find('fieldset > p').add(result.children('p')).add($('.auth-promo > p.lead'))
+        .filter(function () { return obsoleteNotes.includes($(this).text().trim()); }).remove();
+    $(`#${prefix}-result-title`).addClass('visually-hidden');
+    hideResult();
 
     // Unicode letter classes also support passwords entered in Russian.
     const passwordRules = [
@@ -39,185 +52,237 @@
 
     function addVisibilityControl(field) {
         const group = Dielly.el('div', '', 'input-group');
-        const button = Dielly.el('button', 'Показать', 'btn btn-outline-primary');
-        button.type = 'button';
-        button.id = `${field.id}-toggle`;
-        button.setAttribute('aria-controls', field.id);
-        button.setAttribute('aria-pressed', 'false');
-        button.setAttribute('aria-label', 'Показать пароль');
+        const button = Dielly.el('button', 'Показать', 'btn btn-outline-primary')
+            .attr({ type: 'button', id: `${field.attr('id')}-toggle`, 'aria-controls': field.attr('id'),
+                'aria-pressed': 'false', 'aria-label': 'Показать пароль' });
         field.before(group);
         group.append(field, button);
-        button.addEventListener('click', () => {
-            const show = field.type === 'password';
-            field.type = show ? 'text' : 'password';
-            button.textContent = show ? 'Скрыть' : 'Показать';
-            button.setAttribute('aria-pressed', String(show));
-            button.setAttribute('aria-label', show ? 'Скрыть пароль' : 'Показать пароль');
+        button.on('click', function () {
+            const show = field.prop('type') === 'password';
+            field.prop('type', show ? 'text' : 'password');
+            $(this).text(show ? 'Скрыть' : 'Показать').attr({
+                'aria-pressed': String(show), 'aria-label': show ? 'Скрыть пароль' : 'Показать пароль'
+            });
         });
         return group;
     }
 
     const passwordGroup = addVisibilityControl(password);
-    const help = Dielly.el('div', '', 'mt-2');
-    help.id = `${prefix}-password-help`;
+    const help = Dielly.el('div', '', 'mt-2').attr('id', `${prefix}-password-help`);
     const heading = Dielly.el('p', 'Требования к паролю:', 'small fw-semibold mb-1');
-    const checklist = Dielly.el('ul', '', 'small ps-3 mb-2');
-    checklist.setAttribute('aria-live', 'polite');
+    const checklist = Dielly.el('ul', '', 'small ps-3 mb-2').attr('aria-live', 'polite');
     const ruleItems = passwordRules.map(() => Dielly.el('li'));
-    checklist.append(...ruleItems);
+    ruleItems.forEach((item) => checklist.append(item));
     help.append(heading, checklist);
     passwordGroup.after(help);
-    password.setAttribute('aria-describedby', help.id);
+    password.attr('aria-describedby', help.attr('id'));
 
     let confirmation = null;
     if (registration) {
-        const label = Dielly.el('label', 'Повторите пароль:', 'form-label fw-semibold mt-3');
-        confirmation = Dielly.el('input', '', 'form-control');
-        confirmation.id = 'register-password-confirm';
-        confirmation.type = 'password';
-        confirmation.required = true;
-        confirmation.autocomplete = 'new-password';
-        label.htmlFor = confirmation.id;
+        const label = Dielly.el('label', 'Повторите пароль:', 'form-label fw-semibold mt-3')
+            .attr('for', 'register-password-confirm');
+        confirmation = Dielly.el('input', '', 'form-control')
+            .attr({ id: 'register-password-confirm', type: 'password', autocomplete: 'new-password' })
+            .prop('required', true);
         help.after(label, confirmation);
         addVisibilityControl(confirmation);
-        fields.push(confirmation);
     }
 
     function updateChecklist() {
         passwordRules.forEach((rule, index) => {
-            const passed = rule.test(password.value);
-            ruleItems[index].textContent = `${passed ? 'Выполнено' : 'Не выполнено'}: ${rule.label}`;
-            ruleItems[index].classList.toggle('text-success', passed);
-            ruleItems[index].classList.toggle('text-secondary', !passed);
+            const passed = rule.test(password.val());
+            ruleItems[index].text(`${passed ? 'Выполнено' : 'Не выполнено'}: ${rule.label}`)
+                .toggleClass('text-success', passed).toggleClass('text-secondary', !passed);
         });
     }
 
     function fieldMessage(field) {
-        if (field === name) {
-            return field.value.trim() === '' ? 'Введите ваше имя, а не только пробелы.' : '';
+        const value = String(field.val() || '');
+        const validity = field.prop('validity');
+        const nativeError = validity && !validity.valid
+            ? 'Проверьте значение этого поля и его обязательные ограничения.' : '';
+        if (field.is(name)) {
+            return value.trim() === '' ? 'Введите ваше имя, а не только пробелы.' : nativeError;
         }
-        if (field === email) {
-            if (field.value.trim() === '') {
+        if (field.is(email)) {
+            if (value.trim() === '') {
                 return 'Введите адрес электронной почты.';
             }
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim())
-                && !field.validity.typeMismatch ? '' : 'Введите email в формате name@example.com.';
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
+                && !validity.typeMismatch ? nativeError : 'Введите email в формате name@example.com.';
         }
-        if (field === password) {
-            if (field.value === '') {
+        if (field.is(password)) {
+            if (value === '') {
                 return 'Введите пароль для проверки формы. Не используйте свой настоящий пароль.';
             }
-            return passwordRules.every((rule) => rule.test(field.value))
-                ? '' : 'Пароль должен соответствовать всем требованиям в списке ниже.';
+            return passwordRules.every((rule) => rule.test(value))
+                ? nativeError : 'Пароль должен соответствовать всем требованиям в списке ниже.';
         }
-        if (field === confirmation) {
-            if (field.value === '') {
+        if (confirmation && field.is(confirmation)) {
+            if (value === '') {
                 return 'Повторите пароль.';
             }
-            return field.value === password.value ? '' : 'Пароли должны точно совпадать.';
+            return value === password.val() ? nativeError : 'Пароли должны точно совпадать.';
         }
-        return '';
+        if (field.prop('required') && !field.is(':checkbox, :radio') && value.trim() === '') {
+            return 'Заполните это поле: пробелы не считаются значением.';
+        }
+        return nativeError;
+    }
+
+    function validationFields() {
+        return form.find('input, select, textarea').not(':disabled, :button, :submit, :reset, [type="hidden"]');
     }
 
     function hideResult() {
-        message.classList.add('d-none');
-        message.replaceChildren();
+        result.addClass('d-none');
+        message.addClass('d-none').empty();
     }
 
     function updateErrorSummary() {
-        const invalidCount = fields.filter((field) => fieldMessage(field) !== '').length;
-        errors.classList.toggle('d-none', !submitted || invalidCount === 0);
-        errors.textContent = submitted && invalidCount > 0
-            ? `Исправьте поля с ошибками (${invalidCount}). Подсказки находятся рядом с полями.` : '';
+        const invalidCount = validationFields().filter(function () { return fieldMessage($(this)) !== ''; }).length;
+        errors.toggleClass('d-none', !submitted || invalidCount === 0)
+            .text(submitted && invalidCount > 0
+                ? `Исправьте поля с ошибками (${invalidCount}). Подсказки находятся рядом с полями.` : '');
     }
 
     function validateField(field) {
+        if (!field.attr('id')) {
+            extraFieldNumber += 1;
+            field.attr('id', `${prefix}-extra-field-${extraFieldNumber}`);
+        }
+        touched.add(field.attr('id'));
         return Dielly.setFieldError(field, fieldMessage(field));
     }
 
-    function hidePassword(field) {
-        field.value = '';
-        field.type = 'password';
-        const toggle = document.getElementById(`${field.id}-toggle`);
-        toggle.textContent = 'Показать';
-        toggle.setAttribute('aria-pressed', 'false');
-        toggle.setAttribute('aria-label', 'Показать пароль');
-    }
-
-    form.addEventListener('input', (event) => {
-        if (!fields.includes(event.target)) {
-            return;
-        }
-        hideResult();
-        if (event.target === password) {
-            updateChecklist();
-            if (confirmation && (touched.has(confirmation) || submitted)) {
-                validateField(confirmation);
-            }
-        }
-        if (touched.has(event.target) || submitted) {
-            validateField(event.target);
-        }
-        updateErrorSummary();
-    });
-
-    form.addEventListener('focusout', (event) => {
-        if (!fields.includes(event.target)) {
-            return;
-        }
-        if (event.target === email || event.target === name) {
-            event.target.value = event.target.value.trim();
-        }
-        touched.add(event.target);
-        validateField(event.target);
-        updateErrorSummary();
-    });
-
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
+    function validateForm() {
         hideResult();
         submitted = true;
-        email.value = email.value.trim();
-        if (name) {
-            name.value = name.value.trim();
-        }
         let firstInvalid = null;
-        for (const field of fields) {
-            touched.add(field);
+        validationFields().each(function () {
+            const field = $(this);
             if (!validateField(field) && firstInvalid === null) {
                 firstInvalid = field;
             }
-        }
+        });
         updateErrorSummary();
         if (firstInvalid) {
-            firstInvalid.focus();
+            firstInvalid.trigger('focus');
+        }
+        return firstInvalid === null;
+    }
+
+    function bindNativeValidation() {
+        validationFields().each(function () {
+            const field = $(this);
+            if (field.data('authInvalidBound')) {
+                return;
+            }
+            field.data('authInvalidBound', true).on('invalid', function (event) {
+                // invalid does not bubble: bind directly, cancel only the browser tooltip.
+                // Native validation still blocks submission; no recursive checkValidity call.
+                event.preventDefault();
+                validateForm();
+            });
+        });
+    }
+
+    function hidePassword(field) {
+        field.val('').prop('type', 'password');
+        $(`#${field.attr('id')}-toggle`).text('Показать')
+            .attr({ 'aria-pressed': 'false', 'aria-label': 'Показать пароль' });
+    }
+
+    form.on('input change', 'input, select, textarea', function () {
+        const field = $(this);
+        if (!field.is(validationFields())) {
             return;
         }
+        bindNativeValidation();
+        hideResult();
+        if (field.is(password)) {
+            updateChecklist();
+            if (confirmation && (touched.has(confirmation.attr('id')) || submitted)) {
+                validateField(confirmation);
+            }
+        }
+        if (touched.has(field.attr('id')) || submitted) {
+            validateField(field);
+        }
+        if (field.is(':radio')) {
+            validationFields().filter(':radio').each(function () {
+                const radio = $(this);
+                if (radio.attr('name') === field.attr('name') && touched.has(radio.attr('id'))) {
+                    validateField(radio);
+                }
+            });
+        }
+        updateErrorSummary();
+    });
 
-        const title = Dielly.el('p', 'Проверка полей завершена.', 'fw-semibold mb-2');
-        const summary = Dielly.el('p', name
-            ? `${name.value}, формат данных для ${email.value} проверен.`
-            : `Формат данных для ${email.value} проверен.`, 'text-break mb-2');
-        const notice = Dielly.el('p', 'Это фронтенд-демонстрация. Данные не отправлены на сервер. '
-            + 'Учётная запись не создана, вход не выполнен. Для заказа регистрация не нужна.', 'mb-0');
-        message.replaceChildren(title, summary, notice);
-        message.classList.remove('d-none');
-        message.setAttribute('aria-atomic', 'true');
-        message.tabIndex = -1;
-        // Move focus before clearing fields so an Enter submission cannot trigger
-        // blur validation of the passwords we are about to erase.
-        message.focus();
+    form.on('focusout', 'input, select, textarea', function () {
+        const field = $(this);
+        if (!field.is(validationFields())) {
+            return;
+        }
+        if (field.is(email) || field.is(name)) {
+            field.val(field.val().trim());
+        }
+        touched.add(field.attr('id'));
+        validateField(field);
+        updateErrorSummary();
+    });
 
-        // Keep passwords only in their input fields while checking; never persist or echo them.
+    // Refresh direct invalid handlers before default button/Enter submission for added fields.
+    form.on('click', ':submit', bindNativeValidation);
+    form.on('keydown', 'input, select, textarea', function (event) {
+        if (event.key === 'Enter') {
+            bindNativeValidation();
+        }
+    });
+
+    form.on('reset', function () {
+        hideResult();
+        validationFields().each(function () { Dielly.clearFieldState($(this)); });
+        errors.empty().addClass('d-none');
+        touched.clear();
+        submitted = false;
         hidePassword(password);
         if (confirmation) {
             hidePassword(confirmation);
         }
-        fields.forEach((field) => Dielly.clearFieldState(field));
+        // The browser restores field values after the reset event has completed.
+        setTimeout(updateChecklist, 0);
+    });
+
+    form.on('submit', function (event) {
+        // Cancel normal navigation/submission; browser checks cannot replace server validation.
+        event.preventDefault();
+        email.val(email.val().trim());
+        if (name.length) {
+            name.val(name.val().trim());
+        }
+        if (!validateForm()) {
+            return;
+        }
+
+        message.text(registration ? 'Форма заполнена корректно.' : 'Данные формы проверены.').removeClass('d-none')
+            .attr({ 'aria-atomic': 'true', tabindex: '-1' });
+        result.removeClass('d-none');
+        // Move focus before erasing passwords, so Enter cannot cause late blur errors.
+        message.trigger('focus');
+
+        // Passwords stay only in input fields while checking; never persist or echo them.
+        hidePassword(password);
+        if (confirmation) {
+            hidePassword(confirmation);
+        }
+        validationFields().each(function () { Dielly.clearFieldState($(this)); });
         touched.clear();
         submitted = false;
         updateChecklist();
     });
 
+    bindNativeValidation();
     updateChecklist();
-})();
+});
