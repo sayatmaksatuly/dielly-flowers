@@ -1,6 +1,5 @@
 'use strict';
 
-// Assignment 4: catalogue facts and reusable logic, independent of the DOM.
 const Dielly = (() => {
     const products = [
         { id: '101-rose', category: 'flowers', name: '101 роза', price: 50000, description: 'Классика для особых случаев.', image: 'images/2/101-rose.jpeg', alt: 'Букет из 101 розы', badge: 'Хит продаж', imageClass: '' },
@@ -15,22 +14,28 @@ const Dielly = (() => {
         { id: 'fendi', category: 'bags', name: 'Сумка Fendi', price: 55000, description: 'Стильный и удобный выбор для повседневных образов.', image: 'images/2/fendi.jpeg', alt: 'Сумка Fendi', badge: '', imageClass: 'product-photo-bottom' }
     ];
     const maxQuantity = 99;
+    const tenge = new Intl.NumberFormat('ru-KZ', {
+        style: 'currency', currency: 'KZT', maximumFractionDigits: 0
+    });
 
     function getProduct(id) {
         return products.find((product) => product.id === id);
     }
 
     function formatMoney(amount) {
-        return new Intl.NumberFormat('ru-KZ', {
-            style: 'currency', currency: 'KZT', maximumFractionDigits: 0
-        }).format(amount);
+        return tenge.format(amount);
+    }
+
+    function searchText(value) {
+        return value.toLocaleLowerCase('ru').replaceAll('ё', 'е')
+            .normalize('NFD').replace(/([a-z])\p{M}+/gu, '$1').normalize('NFC');
     }
 
     function selectProducts(category, query, maxPrice, sort) {
-        const search = query.trim().toLocaleLowerCase('ru');
+        const words = searchText(query.trim()).split(/\s+/);
         const matches = products.filter((product) => {
-            const text = `${product.name} ${product.description}`.toLocaleLowerCase('ru');
-            return product.category === category && text.includes(search)
+            const text = searchText(`${product.name} ${product.description}`);
+            return product.category === category && words.every((word) => text.includes(word))
                 && (maxPrice === null || product.price <= maxPrice);
         });
         if (sort === 'price-asc') {
